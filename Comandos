@@ -1,0 +1,27 @@
+sudo -s
+yum install httpd
+yum install mariadb-server yum list|grep php
+
+yum install php.x86_64 php-pecl-zip.x86_64 php-gd.x86_64 php- ldap.x86_64 php-intl.x86_64 php-xml.x86_64 php-xml.x86_64 php- mbstring.x86_64 php-soap.x86_64 php-opcache.x86_64 php- common.x86_64 php-mysqlnd.x86_64 php-json.x86_64
+
+
+yum update
+systemctl enable httpd systemctl enable mariadb systemctl start httpd systemctl start mariadb systemctl status httpd systemctl status mariadb mysql -u root
+CREATE DATABASE moodle;
+show databases; use moodle
+GRANT ALL PRIVILEGES ON moodle.*TO moodle_usr@'35.221.54.66' IDENTIFIED BY 'yB5KHqpwgkMR';
+quit
+yum install wget yes
+ 
+wget https://download.moodle.org/stable36/moodle-3.6.9.tgz ls
+mv moodle-3.6.9.tgz /var/www/html/ cd /var/www/html/
+ls
+tar xvzf moodle-3.6.9.tgz mkdir /var/www/moodledata systemctl restart httpd systemctl restart mariadb systemctl restart mysqld yum install firewalld
+Y
+systemctl start firewalld systemctl enable firewalld systemctl status firewalld
+firewall-cmd --permanent --zone=public --add-service=http firewall-cmd --permanent --zone=public --add-service=https firewall-cmd --permanent --zone=public --add-port=80/tcp firewall-cmd --permanent --zone=public --list-all
+firewall-cmd --reload
+sudo systemctl restart NetworkManager.service
+chcon -Rvu system_u -t httpd_sys_content_rw_t /var/www/moodledata systemctl restart httpd
+systemctl restart mariadb systemctl restart mysql
+chmod 777 /var/www/moodledata
